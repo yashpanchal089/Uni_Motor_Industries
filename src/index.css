@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-navy: #062B4F;
+    --secondary-navy: #0B3A63;
+    --brand-gold: #E5A51A;
+    --light-gold: #F4C44E;
+    --bg-beige: #F5F0E6;
+    --white: #FFFFFF;
+    --dark-text: #122033;
+  }
+
+  body {
+    background-color: var(--bg-beige);
+    color: var(--dark-text);
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Color Utilities */
+.bg-primary-navy { background-color: #062B4F; }
+.bg-secondary-navy { background-color: #0B3A63; }
+.bg-brand-gold { background-color: #E5A51A; }
+.bg-light-gold { background-color: #F4C44E; }
+.bg-bg-beige { background-color: #F5F0E6; }
+.bg-dark-text { background-color: #122033; }
+
+.text-primary-navy { color: #062B4F; }
+.text-secondary-navy { color: #0B3A63; }
+.text-brand-gold { color: #E5A51A; }
+.text-light-gold { color: #F4C44E; }
+.text-bg-beige { color: #F5F0E6; }
+.text-dark-text { color: #122033; }
+
+.border-brand-gold { border-color: #E5A51A; }
+.border-primary-navy { border-color: #062B4F; }
+.border-secondary-navy { border-color: #0B3A63; }
+
+/* Engineering Blueprint & Grid Backgrounds */
+.blueprint-grid {
+  background-image: linear-gradient(to right, rgba(6, 43, 79, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(6, 43, 79, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.blueprint-grid-dark {
+  background-image: linear-gradient(to right, rgba(229, 165, 26, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(229, 165, 26, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glassmorphism Header */
+.glass-header-light {
+  background: rgba(245, 240, 230, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(6, 43, 79, 0.08);
+}
+
+.glass-header-dark {
+  background: rgba(6, 43, 79, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(229, 165, 26, 0.2);
+}
+
+/* HUD Radial Rings & Technical Animations */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 28s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinReverse 22s linear infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s ease-in-out infinite;
+}
+
+/* Gold Accent Lines & Borders */
+.gold-gradient-line {
+  background: linear-gradient(90deg, #E5A51A 0%, #F4C44E 50%, rgba(229, 165, 26, 0.1) 100%);
+}
+
+.card-hover-shadow {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover-shadow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(6, 43, 79, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F0E6;
+}
+::-webkit-scrollbar-thumb {
+  background: #0B3A63;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E5A51A;
+}
+
+/* Accessibility reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

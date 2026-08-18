@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unimotorindustries.com/sitemap.xml
