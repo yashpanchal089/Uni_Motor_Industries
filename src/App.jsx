@@ -9,6 +9,7 @@ import FloatingContact from './components/FloatingContact';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
+import CategoryProducts from './pages/CategoryProducts';
 import Industries from './pages/Industries';
 import Contact from './pages/Contact';
 
@@ -33,6 +34,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/products/:categorySlug" element={<CategoryProducts />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Home />} />

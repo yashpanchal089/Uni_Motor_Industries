@@ -1,202 +1,225 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Search, Filter, Layers, Download, CheckCircle2, ChevronRight } from 'lucide-react';
-import SectionHeading from '../components/SectionHeading';
-import ProductCard from '../components/ProductCard';
-import ProductModal from '../components/ProductModal';
-import Button from '../components/Button';
-import { productsData, productCategories } from '../data/products';
+import { ArrowRight, Clock, Settings, Layers, HeartHandshake, ShieldCheck, Cpu } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { categoryShowcase } from '../data/products';
 
 export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
 
-  const filteredProducts = useMemo(() => {
-    return productsData.filter((p) => {
-      const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
-      const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            p.category.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [selectedCategory, searchQuery]);
+  const stats = [
+    {
+      number: "2006",
+      label: "Since",
+      sub: "Continuous Manufacturing"
+    },
+    {
+      number: "10+",
+      label: "Industrial Sectors",
+      sub: "Applications Powered"
+    },
+    {
+      number: "100%",
+      label: "Custom Solutions",
+      sub: "Tailored Shafts & Gears"
+    },
+    {
+      number: "Global",
+      label: "Market Reach",
+      sub: "Domestic & Export Markets"
+    }
+  ];
+
+  const usps = [
+    {
+      title: "Customisation Option",
+      description: "We delivers tailored made solutions for customers unique needs and Requirements",
+      icon: Settings
+    },
+    {
+      title: "Wide Product Range",
+      description: "Offering a diverse range of motors and gearbox to cater to various industries and applications need",
+      icon: Layers
+    },
+    {
+      title: "Customer Centric Approach",
+      description: "Prioritizing customer satisfaction by providing user-friendly, economical, and high-quality products",
+      icon: HeartHandshake
+    },
+    {
+      title: "Safety and Compliance",
+      description: "An ISO 9001:2015 and 14001:2015 Certified Organization. Our Products are ROHs, UL and CE certified meeting industry standards for safety and reliability.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Technical Expertise",
+      description: "Dedicated to research and development and Providing technically superior products with superior performance for enhanced efficiency.",
+      icon: Cpu
+    }
+  ];
 
   return (
     <>
       <Helmet>
-        <title>AC Synchronous & Geared Motors | Uni Motors Industries</title>
-        <meta name="description" content="Technical catalogue of bi-directional AC synchronous motors, low-RPM geared motors, and pear-shaped gearboxes (UM1, GB5PS, GB3S, UM4, GB3, GB4)." />
+        <title>Technical Motor & Gearbox Range | Uni Motors Industries</title>
+        <meta
+          name="description"
+          content="Explore Uni Motors Industries 4 core industrial product categories: Synchronous Motors, PM Stepper Motors, Spur Gearbox, and DC Geared Motors."
+        />
       </Helmet>
 
       <div className="pt-24 lg:pt-28">
         
         {/* ================= PRODUCTS HERO ================= */}
-        <section className="bg-primary-navy text-white py-16 relative overflow-hidden border-b-4 border-brand-gold">
+        <section className="bg-primary-navy text-white py-14 relative overflow-hidden border-b-4 border-brand-gold">
           <div className="absolute inset-0 blueprint-grid-dark opacity-25 pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span className="inline-block px-3.5 py-1 rounded bg-brand-gold text-primary-navy text-xs font-black uppercase tracking-widest mb-3">
-              TECHNICAL MOTOR CATALOGUE
+            <span className="inline-block px-3.5 py-1 rounded bg-brand-gold text-primary-navy text-xs font-black uppercase tracking-widest mb-3 shadow-md">
+              TECHNICAL MOTOR & GEARBOX CATALOGUE
             </span>
 
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight">
-              PRECISION MOTOR & GEARBOX RANGE
+            <h1 className="text-3xl sm:text-5xl font-black tracking-tight uppercase">
+              Precision Motors & Gearboxes
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto mt-3 font-medium">
-              Explore technical specifications for bi-directional 500 RPM synchronous motors and pear-shaped reduction gearboxes.
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mt-3 font-medium leading-relaxed">
+              Explore our core motion technology range designed for continuous duty industrial machinery and precision timing systems.
             </p>
           </div>
         </section>
 
 
-        {/* ================= FILTER & SEARCH CONTROLS ================= */}
-        <section className="py-8 bg-bg-beige border-b border-slate-200 sticky top-[68px] z-30 shadow-sm backdrop-blur-md bg-bg-beige/95">
+        {/* ================= 4 CORE CATEGORY SHOWCASE (PHOTO & NAME ONLY) ================= */}
+        <section className="py-16 bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              
-              {/* Category Pills */}
-              <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
-                {productCategories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                      selectedCategory === cat
-                        ? 'bg-primary-navy text-brand-gold border border-brand-gold shadow-md'
-                        : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
-                    }`}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {categoryShowcase.map((cat, index) => {
+                const isComingSoon = cat.status === "Comming soon";
+
+                return (
+                  <motion.div
+                    key={cat.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.08, duration: 0.3 }}
+                    onClick={() => navigate(`/products/${cat.id}`)}
+                    className="rounded-xl border border-slate-200 hover:border-brand-gold transition-all duration-300 overflow-hidden shadow-sm hover:shadow-xl group bg-white cursor-pointer hover:-translate-y-1"
                   >
-                    {cat}
-                  </button>
-                ))}
-              </div>
+                    {/* Image Container */}
+                    <div className="relative h-56 w-full bg-slate-50 overflow-hidden flex items-center justify-center p-6 border-b border-slate-100 group-hover:bg-amber-50/20 transition-colors">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        loading="lazy"
+                        className="max-h-full max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {isComingSoon && (
+                        <div className="absolute top-3 left-3 bg-amber-500 text-primary-navy text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded shadow">
+                          Comming soon
+                        </div>
+                      )}
+                    </div>
 
-              {/* Search Bar */}
-              <div className="relative w-full md:w-72">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                <input
-                  type="text"
-                  placeholder="Search model or spec..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 rounded bg-white border border-slate-300 text-xs font-semibold focus:outline-none focus:border-primary-navy text-primary-navy shadow-inner"
-                />
-              </div>
-
+                    {/* Below Photo: ONLY THE NAME (nothing else) */}
+                    <div className="p-5 text-center bg-white group-hover:bg-slate-50/60 transition-colors flex items-center justify-center gap-2">
+                      <h3 className="text-lg font-black text-primary-navy group-hover:text-secondary-navy transition-colors">
+                        {cat.name}
+                      </h3>
+                      <ArrowRight className="w-4 h-4 text-brand-gold group-hover:translate-x-1 transition-transform shrink-0" />
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
 
 
-        {/* ================= PRODUCT GRID ================= */}
-        <section className="py-16 bg-white min-h-[60vh]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ================= WHY CHOOSE UNIMOTORINDUSTRIES FOR YOUR BUSINESS ================= */}
+        <section className="py-16 bg-primary-navy text-white relative overflow-hidden border-b border-slate-800">
+          <div className="absolute inset-0 blueprint-grid-dark opacity-20 pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
-            {filteredProducts.length === 0 ? (
-              <div className="text-center py-16 bg-bg-beige rounded-lg border border-slate-200">
-                <p className="text-slate-500 font-bold text-sm">No motors found matching your search criteria.</p>
-                <button
-                  onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
-                  className="mt-4 text-xs font-black text-primary-navy underline uppercase tracking-wider"
+            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mb-2">
+              Why choose UniMotorIndustries for your business
+            </h2>
+
+            <p className="text-sm sm:text-base text-brand-gold font-bold italic max-w-2xl mx-auto mb-12">
+              "Engineered for applications that demand dependable motion."
+            </p>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              {stats.map((s, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.4 }}
+                  className="bg-secondary-navy/70 border border-brand-gold/30 rounded-xl p-6 backdrop-blur shadow-md hover:border-brand-gold transition-all"
                 >
-                  Reset Filters
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                {filteredProducts.map((prod) => (
-                  <ProductCard
-                    key={prod.id}
-                    product={prod}
-                    onSelect={(p) => setSelectedProduct(p)}
-                  />
-                ))}
-              </div>
-            )}
+                  <div className="text-3xl sm:text-5xl font-black text-brand-gold mb-2 tracking-tight">
+                    {s.number}
+                  </div>
+                  <div className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-white mb-1">
+                    {s.label}
+                  </div>
+                  <div className="text-xs text-slate-300 font-medium">
+                    {s.sub}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
           </div>
         </section>
 
 
-        {/* ================= TECHNICAL COMPARISON MATRIX ================= */}
-        <section className="py-20 bg-bg-beige blueprint-grid border-t border-slate-200">
+        {/* ================= UNIQUE SELLING PROPOSITION ( USP ) ================= */}
+        <section className="py-20 bg-bg-beige border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading
-              badge="ENGINEERING SUMMARY"
-              title="Gearbox Torque & Shaft Comparison"
-              subtitle="Quick reference sheet for Uni Motors pear-shaped gear reduction units."
-            />
-
-            <div className="overflow-x-auto bg-white rounded-lg shadow-lg border border-slate-300">
-              <table className="w-full text-left text-xs md:text-sm">
-                <thead className="bg-primary-navy text-white uppercase text-[11px] font-bold">
-                  <tr>
-                    <th className="py-3.5 px-4 border-b border-brand-gold">Gearbox Model</th>
-                    <th className="py-3.5 px-4 border-b border-brand-gold">Gear Torque</th>
-                    <th className="py-3.5 px-4 border-b border-brand-gold">Lateral Torque</th>
-                    <th className="py-3.5 px-4 border-b border-brand-gold">Output Shaft</th>
-                    <th className="py-3.5 px-4 border-b border-brand-gold">Outer Dimensions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200 font-medium">
-                  <tr className="hover:bg-amber-50/60 transition-colors">
-                    <td className="py-3 px-4 font-black text-primary-navy">UM1</td>
-                    <td className="py-3 px-4 text-slate-800">3 kg-cm</td>
-                    <td className="py-3 px-4 text-slate-800">5 kg-cm</td>
-                    <td className="py-3 px-4 font-mono">4 x 12 mm</td>
-                    <td className="py-3 px-4 font-mono text-slate-600">55.2 x 62 x 12 mm</td>
-                  </tr>
-                  <tr className="hover:bg-amber-50/60 transition-colors">
-                    <td className="py-3 px-4 font-black text-primary-navy">GB5PS</td>
-                    <td className="py-3 px-4 text-slate-800">5 kg-cm</td>
-                    <td className="py-3 px-4 text-slate-800">6 kg-cm</td>
-                    <td className="py-3 px-4 font-mono">4 x 11.5 mm</td>
-                    <td className="py-3 px-4 font-mono text-slate-600">55.2 x 65.8 x 16.5 mm</td>
-                  </tr>
-                  <tr className="hover:bg-amber-50/60 transition-colors">
-                    <td className="py-3 px-4 font-black text-primary-navy">GB3S</td>
-                    <td className="py-3 px-4 text-slate-800">5 kg-cm</td>
-                    <td className="py-3 px-4 text-slate-800">6 kg-cm</td>
-                    <td className="py-3 px-4 font-mono">4 x 12 mm</td>
-                    <td className="py-3 px-4 font-mono text-slate-600">41 x 16.5 mm</td>
-                  </tr>
-                  <tr className="hover:bg-amber-50/60 transition-colors">
-                    <td className="py-3 px-4 font-black text-primary-navy">UM4</td>
-                    <td className="py-3 px-4 text-slate-800">10 kg-cm</td>
-                    <td className="py-3 px-4 text-slate-800">6 kg-cm</td>
-                    <td className="py-3 px-4 font-mono">4 x 10.5 mm</td>
-                    <td className="py-3 px-4 font-mono text-slate-600">55 x 63.8 x 12 mm</td>
-                  </tr>
-                  <tr className="hover:bg-amber-50/60 transition-colors">
-                    <td className="py-3 px-4 font-black text-primary-navy">GB3</td>
-                    <td className="py-3 px-4 text-slate-800">50 kg-cm</td>
-                    <td className="py-3 px-4 text-slate-800">40 kg-cm</td>
-                    <td className="py-3 px-4 font-mono">8 x 17 mm</td>
-                    <td className="py-3 px-4 font-mono text-slate-600">60 x 60 x 19 mm</td>
-                  </tr>
-                  <tr className="hover:bg-amber-50/60 transition-colors">
-                    <td className="py-3 px-4 font-black text-primary-navy">GB4</td>
-                    <td className="py-3 px-4 text-slate-800">100 kg-cm</td>
-                    <td className="py-3 px-4 text-slate-800">80 kg-cm</td>
-                    <td className="py-3 px-4 font-mono">8 x 18 mm</td>
-                    <td className="py-3 px-4 font-mono text-slate-600">70 x 70 x 19 mm / 78 x 72 x 19 mm</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="text-center mb-14">
+              <span className="text-xs font-black uppercase tracking-widest text-brand-gold bg-primary-navy px-3 py-1 rounded">
+                OUR CORE ADVANTAGES
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black text-primary-navy uppercase tracking-tight mt-3">
+                Unique Selling Proposition ( USP )
+              </h2>
             </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {usps.map((usp, idx) => {
+                const IconComponent = usp.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.08, duration: 0.3 }}
+                    className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="w-12 h-12 rounded-lg bg-amber-50 border border-brand-gold/30 flex items-center justify-center text-primary-navy mb-4">
+                        <IconComponent className="w-6 h-6 text-primary-navy" />
+                      </div>
+                      <h3 className="text-base font-black text-primary-navy uppercase mb-2">
+                        {usp.title}
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        {usp.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </section>
 
       </div>
-
-      {/* Technical Modal */}
-      <ProductModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-      />
     </>
   );
 }

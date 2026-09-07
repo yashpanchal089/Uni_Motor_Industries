@@ -1,143 +1,101 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, ArrowRight, Gauge, Layers, Shield } from 'lucide-react';
-
-// Generates styled high-tech SVG motor graphics for product visual presentation
-const RenderProductVisual = ({ imageType, name }) => {
-  return (
-    <div className="w-full h-48 bg-gradient-to-br from-secondary-navy via-primary-navy to-slate-900 rounded-t-lg relative overflow-hidden flex items-center justify-center p-6 border-b border-brand-gold/30 group">
-      {/* Blueprint grid background inside card header */}
-      <div className="absolute inset-0 blueprint-grid-dark opacity-30 pointer-events-none" />
-
-      {/* Outer Radial Ring HUD */}
-      <div className="absolute w-36 h-36 rounded-full border border-dashed border-brand-gold/30 animate-spin-slow" />
-
-      {/* SVG Motor Vector Illustration */}
-      <div className="relative z-10 w-28 h-28 transform transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
-        <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-xl">
-          <defs>
-            <linearGradient id={`grad-${imageType}`} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F4C44E" />
-              <stop offset="100%" stopColor="#E5A51A" />
-            </linearGradient>
-          </defs>
-
-          {/* Motor / Gearbox Housing Geometry */}
-          {imageType.includes('gearbox') ? (
-            /* Pear Shaped Gearbox Body */
-            <g>
-              <path
-                d="M 40,100 C 40,40 100,40 130,70 Q 160,100 160,130 C 160,170 100,170 40,100 Z"
-                fill="none"
-                stroke="url(#grad-gearbox-1)"
-                strokeWidth="6"
-              />
-              <circle cx="90" cy="100" r="32" fill="#041B33" stroke="#F4C44E" strokeWidth="3" />
-              <circle cx="90" cy="100" r="10" fill="#E5A51A" />
-              <line x1="90" y1="100" x2="135" y2="65" stroke="#F4C44E" strokeWidth="4" strokeLinecap="round" />
-            </g>
-          ) : (
-            /* Cylindrical AC Synchronous Motor Body */
-            <g>
-              <rect x="40" y="50" width="120" height="100" rx="12" fill="none" stroke="url(#grad-ac-motor-1)" strokeWidth="6" />
-              <circle cx="100" cy="100" r="34" fill="#062B4F" stroke="#F4C44E" strokeWidth="3" />
-              <circle cx="100" cy="100" r="12" fill="#E5A51A" />
-              <path d="M 30,70 L 30,130 M 170,70 L 170,130" stroke="#F4C44E" strokeWidth="4" strokeLinecap="round" />
-            </g>
-          )}
-        </svg>
-      </div>
-
-      {/* Category Overlay Tag */}
-      <div className="absolute top-3 right-3 bg-primary-navy/90 text-brand-gold text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded border border-brand-gold/40 shadow-sm backdrop-blur">
-        PRECISION MOTOR
-      </div>
-    </div>
-  );
-};
+import { ArrowRight, FileCheck } from 'lucide-react';
 
 export default function ProductCard({ product, onSelect }) {
-  const specs = product.specifications;
+  const [imgError, setImgError] = useState(false);
+  const specs = product.specifications || {};
+
+  // Extract the exact 3 concise key lines matching Mechtex card display
+  const renderCardExcerpt = () => {
+    if (product.category === "Synchronous Motors") {
+      return (
+        <div className="space-y-1 text-xs text-slate-700 font-medium py-1">
+          <p><span className="font-bold text-primary-navy">Speed:</span> {specs.speed ? specs.speed.split('(')[0].trim() : '500 RPM'}</p>
+          <p><span className="font-bold text-primary-navy">Torque:</span> {specs.torque || '1.35 Ncm'}</p>
+          <p><span className="font-bold text-primary-navy">Input Power:</span> {specs.inputPower ? specs.inputPower.split('(')[0].trim() : '2.1 W'}</p>
+        </div>
+      );
+    } else if (product.category === "PM Stepper Motors") {
+      return (
+        <div className="space-y-1 text-xs text-slate-700 font-medium py-1">
+          <p><span className="font-bold text-primary-navy">Step Angle:</span> {specs.stepAngle ? specs.stepAngle.split('(')[0].trim() : '15°'}</p>
+          <p><span className="font-bold text-primary-navy">Holding Torque:</span> {specs.holdingTorque || '2.5 cNm'}</p>
+          <p><span className="font-bold text-primary-navy">Voltage:</span> {specs.voltage || '6V to 24V DC'}</p>
+        </div>
+      );
+    } else {
+      // Spur Gearbox
+      return (
+        <div className="space-y-1 text-xs text-slate-700 font-medium py-1">
+          <p><span className="font-bold text-primary-navy">Gear Torque:</span> {specs.gearTorque || '0.5 to 1 Nm'}</p>
+          <p><span className="font-bold text-primary-navy">Lateral Force:</span> {specs.lateralForce || '60 N'}</p>
+          <p><span className="font-bold text-primary-navy">Dimensions:</span> {specs.dimensions || '55.2 x 65.8 mm'}</p>
+        </div>
+      );
+    }
+  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white rounded-lg border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.25 }}
+      className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
     >
       <div>
         {/* Card Visual Header */}
-        <RenderProductVisual imageType={product.imageType} name={product.name} />
+        <div className="w-full h-52 bg-slate-50 relative overflow-hidden flex items-center justify-center p-4 border-b border-slate-200 group">
+          {product.image && !imgError ? (
+            <img
+              src={product.image}
+              alt={product.name}
+              loading="lazy"
+              onError={() => setImgError(true)}
+              className="max-h-44 max-w-full object-contain filter drop-shadow-sm transform transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="text-slate-400 font-bold text-sm">Uni Motors Model</div>
+          )}
 
-        {/* Content Body */}
-        <div className="p-6">
-          {/* Category Label */}
-          <div className="text-xs font-extrabold text-brand-gold tracking-widest uppercase mb-1">
+          {/* Drawing Available Badge */}
+          {product.drawingImage && (
+            <div className="absolute top-2.5 left-2.5 bg-emerald-700/95 text-white text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded shadow flex items-center gap-1 backdrop-blur">
+              <FileCheck className="w-3 h-3" />
+              <span>Drawing</span>
+            </div>
+          )}
+
+          {/* Category Tag */}
+          <div className="absolute top-2.5 right-2.5 bg-primary-navy/90 text-brand-gold text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-brand-gold/30">
             {product.category}
           </div>
+        </div>
 
+        {/* Content Body: Clean, concise text matching Mechtex cards */}
+        <div className="p-5 text-center">
           {/* Product Title */}
-          <h3 className="text-lg font-extrabold text-primary-navy group-hover:text-secondary-navy transition-colors line-clamp-2 mb-2">
+          <h3 className="text-xl font-black text-primary-navy group-hover:text-secondary-navy transition-colors mb-2">
             {product.name}
           </h3>
 
-          {/* Short Description */}
-          <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
-            {product.shortDescription}
-          </p>
-
-          {/* Technical Specs Key Highlights */}
-          <div className="bg-bg-beige/70 p-3 rounded border border-slate-200/70 space-y-2 mb-4">
-            {specs.speed && (
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500 font-semibold flex items-center gap-1.5">
-                  <Gauge className="w-3.5 h-3.5 text-primary-navy" /> Speed:
-                </span>
-                <span className="font-extrabold text-primary-navy">{specs.speed}</span>
-              </div>
-            )}
-
-            {specs.torque && (
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500 font-semibold flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-primary-navy" /> Torque:
-                </span>
-                <span className="font-extrabold text-primary-navy">{specs.torque}</span>
-              </div>
-            )}
-
-            {specs.gearTorque && (
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500 font-semibold flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-primary-navy" /> Gear Torque:
-                </span>
-                <span className="font-extrabold text-primary-navy">{specs.gearTorque}</span>
-              </div>
-            )}
-
-            {specs.outputShaft && (
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-500 font-semibold flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-primary-navy" /> Shaft:
-                </span>
-                <span className="font-extrabold text-slate-800">{specs.outputShaft}</span>
-              </div>
-            )}
+          {/* Concise Excerpt - strictly limited to 3 key specs, no cluttered text */}
+          <div className="bg-slate-50 rounded p-3 border border-slate-100 text-left">
+            {renderCardExcerpt()}
           </div>
         </div>
       </div>
 
       {/* Card Footer Button */}
-      <div className="px-6 pb-6 pt-0">
+      <div className="px-5 pb-5 pt-0">
         <button
           onClick={() => onSelect(product)}
-          className="w-full py-2.5 px-4 rounded bg-primary-navy hover:bg-brand-gold text-white hover:text-primary-navy font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group/btn shadow-sm"
+          className="w-full py-2.5 px-4 rounded bg-primary-navy hover:bg-brand-gold text-white hover:text-primary-navy font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group/btn shadow-sm cursor-pointer"
         >
-          <span>View Technical Details</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+          <span>Read More</span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
         </button>
       </div>
     </motion.div>
