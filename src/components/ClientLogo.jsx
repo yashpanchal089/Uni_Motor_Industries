@@ -1,38 +1,35 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Globe, Building2 } from 'lucide-react';
+import { Cpu, Activity, FlaskConical, HeartPulse, Stethoscope, Cog, Globe, Building2, Zap } from 'lucide-react';
 
-export default function ClientLogo({ client, index }) {
+const iconMap = {
+  Cpu,
+  Activity,
+  FlaskConical,
+  HeartPulse,
+  Stethoscope,
+  Cog,
+  Globe,
+  Building2,
+  Zap
+};
+
+export default function ClientLogo({ client }) {
+  const IconComponent = iconMap[client.icon] || Building2;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.04 }}
-      whileHover={{ y: -4, borderColor: '#E5A51A' }}
-      className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-36 group relative overflow-hidden"
-    >
-      {/* Corner Gold Highlight Accent */}
-      <div className="absolute top-0 right-0 w-8 h-8 bg-brand-gold/10 rounded-bl-full pointer-events-none group-hover:bg-brand-gold/30 transition-colors" />
-
-      <div className="flex items-start justify-between gap-2">
-        <Building2 className="w-5 h-5 text-primary-navy group-hover:text-brand-gold transition-colors shrink-0" />
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">
-          <Globe className="w-3 h-3 text-slate-400" />
-          {client.location}
-        </span>
+    <div className="w-60 sm:w-68 h-36 mx-3.5 shrink-0 bg-white rounded-xl border border-slate-200/90 hover:border-brand-gold shadow-xs hover:shadow-lg transition-all duration-300 p-4 flex flex-col items-center justify-center text-center group select-none cursor-pointer">
+      {/* Company Logo Badge */}
+      <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-3 border shadow-xs transition-transform duration-300 group-hover:scale-110 ${client.badgeColor || 'bg-slate-50 text-primary-navy border-slate-200'}`}>
+        <div className="flex flex-col items-center justify-center">
+          <IconComponent className="w-5 h-5 stroke-[2.2]" />
+          <span className="text-[10px] font-black tracking-wider uppercase mt-0.5">{client.initials}</span>
+        </div>
       </div>
 
-      <div className="my-auto">
-        <h4 className="text-sm font-extrabold text-primary-navy group-hover:text-secondary-navy transition-colors tracking-tight line-clamp-2">
-          {client.name}
-        </h4>
-        <p className="text-[11px] text-slate-500 font-medium mt-1 line-clamp-1">
-          {client.sector}
-        </p>
+      {/* Below Only Company Name */}
+      <div className="text-xs sm:text-sm font-extrabold text-primary-navy group-hover:text-secondary-navy transition-colors tracking-tight line-clamp-2 px-2 leading-snug">
+        {client.name}
       </div>
-
-      <div className="w-full h-0.5 bg-slate-100 group-hover:bg-brand-gold transition-colors rounded-full" />
-    </motion.div>
+    </div>
   );
 }

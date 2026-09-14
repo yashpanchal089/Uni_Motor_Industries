@@ -438,10 +438,10 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
-              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6"
+              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 items-stretch"
             >
               {uspList.map((usp) => (
-                <motion.div key={usp.number} variants={itemVariants}>
+                <motion.div key={usp.number} variants={itemVariants} className="h-full flex flex-col">
                   <USPCard
                     number={usp.number}
                     title={usp.title}
@@ -578,29 +578,28 @@ export default function Home() {
         </section>
 
 
-        {/* ================= CLIENTS NETWORK ================= */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ================= CLIENTS NETWORK (CONTINUOUS HORIZONTAL LINE MARQUEE) ================= */}
+        <section className="py-20 bg-white overflow-hidden border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
             <SectionHeading
               badge="INDUSTRIAL NETWORK"
               title="Trusted by Industry"
               subtitle="Serving leading equipment manufacturers, instrument developers, and distributors across India and abroad."
               centered={true}
             />
+          </div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {clientsData.map((client, idx) => (
-                <motion.div key={client.id} variants={itemVariants}>
-                  <ClientLogo client={client} index={idx} />
-                </motion.div>
+          {/* Continuous Non-Stop Single Horizontal Line */}
+          <div className="relative w-full overflow-hidden py-4">
+            {/* Left & Right Soft Fade Masks */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-white to-transparent z-10" />
+
+            <div className="animate-marquee-infinite flex items-center">
+              {[...clientsData, ...clientsData, ...clientsData].map((client, idx) => (
+                <ClientLogo key={`${client.id}-${idx}`} client={client} />
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 

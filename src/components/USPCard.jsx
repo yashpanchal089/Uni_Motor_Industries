@@ -20,7 +20,7 @@ export default function USPCard({ title, description, iconName, number }) {
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="relative bg-white p-8 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
+      className="h-full flex flex-col relative bg-white p-7 rounded-lg border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
     >
       {/* Top Gold Line Accent on Hover */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-transparent group-hover:bg-brand-gold transition-colors duration-300" />
@@ -31,17 +31,17 @@ export default function USPCard({ title, description, iconName, number }) {
       </div>
 
       {/* Engineering Icon */}
-      <div className="w-14 h-14 rounded-lg bg-bg-beige group-hover:bg-primary-navy transition-colors duration-300 flex items-center justify-center mb-6 text-primary-navy group-hover:text-brand-gold shadow-inner border border-primary-navy/10">
+      <div className="w-14 h-14 rounded-lg bg-bg-beige group-hover:bg-primary-navy transition-colors duration-300 flex items-center justify-center mb-6 text-primary-navy group-hover:text-brand-gold shadow-inner border border-primary-navy/10 shrink-0">
         <IconComponent className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />
       </div>
 
       {/* Title */}
-      <h3 className="text-lg font-extrabold text-primary-navy tracking-tight mb-3 uppercase group-hover:text-secondary-navy transition-colors">
+      <h3 className="text-base font-extrabold text-primary-navy tracking-tight mb-3 uppercase group-hover:text-secondary-navy transition-colors min-h-[3rem] flex items-center">
         {title}
       </h3>
 
       {/* Description */}
-      <p className="text-sm text-slate-600 leading-relaxed">
+      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed flex-grow">
         {description}
       </p>
     </motion.div>

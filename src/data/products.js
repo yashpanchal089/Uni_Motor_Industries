@@ -4,7 +4,7 @@ export const categoryShowcase = [
     id: "synchronous-motors",
     name: "Synchronous Motors",
     categoryKey: "Synchronous Motors",
-    image: "https://mechtex.com/uploads/images/202311/image_750x_654b46461fae1.jpg",
+    image: "/synchronous-motor.png",
     status: "Available",
     description: "UL and CE compliant constant-speed AC synchronous motors engineered for precise angular velocity, immediate bi-directional reversing, and continuous industrial operations.",
     features: [
@@ -18,7 +18,7 @@ export const categoryShowcase = [
     id: "pm-stepper-motors",
     name: "PM Stepper Motors",
     categoryKey: "PM Stepper Motors",
-    image: "https://mechtex.com/uploads/images/202311/image_750x_654b46461fae1.jpg",
+    image: "/pm-stepper-motor.png",
     status: "Available",
     description: "Permanent magnet stepper motors delivering rapid start-stop-pause response, zero cumulative step error, and holding torque up to 30 cNm.",
     features: [
@@ -32,7 +32,7 @@ export const categoryShowcase = [
     id: "spur-gearbox",
     name: "Spur Gearbox",
     categoryKey: "Spur Gearbox",
-    image: "https://mechtex.com/uploads/images/202311/image_750x_654b49b1b3863.jpg",
+    image: "/spur-gearbox.png",
     status: "Available",
     description: "High-torque reduction gearheads featuring reinforced die-cast alloy casings, low backlash ground steel gear trains, and high lateral force tolerance.",
     features: [
@@ -46,7 +46,7 @@ export const categoryShowcase = [
     id: "dc-geared-motors",
     name: "DC Geared Motors",
     categoryKey: "DC Geared Motors",
-    image: "https://mechtex.com/uploads/images/202407/image_750x_668b8e453279d.jpg",
+    image: "/dc-geared-motor.png",
     status: "Coming soon",
     description: "Upcoming series of variable-speed brushed DC geared drive units with custom reduction profiles, designed for battery-powered automation and high starting torque applications.",
     features: [
