@@ -86,10 +86,10 @@ const categoryContent = {
     name: "DC Geared Motors",
     categoryKey: "DC Geared Motors",
     badge: "DC MOTORS & SPEED REDUCERS",
-    headline: "DC Geared Motors - Comming soon",
+    headline: "DC Geared Motors - Coming soon",
     intro: "Our upcoming product line of low-RPM brushed DC motors with integrated reduction gearheads is currently undergoing electrical testing and certification. Standard voltages in 12V, 24V, and 48V DC will be available soon for OEM applications.",
     characteristics: [
-      "Comming soon for OEM prototyping and volume manufacturing.",
+      "Coming soon for OEM prototyping and volume manufacturing.",
       "Variable speed regulation using standard PWM DC motor controllers.",
       "Tailored gear ratios and output shaft flats to customer drawings.",
       "High power-to-weight ratio for portable and automated machinery."
@@ -272,7 +272,7 @@ export default function CategoryProducts() {
                   NEW PRODUCT LINE
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-primary-navy uppercase mb-3">
-                  DC Geared Motors - Comming soon
+                  DC Geared Motors - Coming soon
                 </h3>
                 <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-6">
                   Our dedicated range of low-RPM brushed DC motors with integrated spur reduction gearheads is currently completing electrical and endurance testing. Custom configurations in 12V, 24V, and 48V DC will be available for OEM equipment prototyping.

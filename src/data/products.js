@@ -47,10 +47,10 @@ export const categoryShowcase = [
     name: "DC Geared Motors",
     categoryKey: "DC Geared Motors",
     image: "https://mechtex.com/uploads/images/202407/image_750x_668b8e453279d.jpg",
-    status: "Comming soon",
+    status: "Coming soon",
     description: "Upcoming series of variable-speed brushed DC geared drive units with custom reduction profiles, designed for battery-powered automation and high starting torque applications.",
     features: [
-      "Comming soon for OEM prototyping",
+      "Coming soon for OEM prototyping",
       "Custom voltage ratings 12V / 24V / 48V",
       "Integrated spur reduction stages",
       "Flexible shaft & keyway configurations"

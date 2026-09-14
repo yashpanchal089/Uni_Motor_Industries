@@ -95,7 +95,7 @@ export default function Products() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {categoryShowcase.map((cat, index) => {
-                const isComingSoon = cat.status === "Comming soon";
+                const isComingSoon = cat.status === "Coming soon";
 
                 return (
                   <motion.div
@@ -117,7 +117,7 @@ export default function Products() {
                       />
                       {isComingSoon && (
                         <div className="absolute top-3 left-3 bg-amber-500 text-primary-navy text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded shadow">
-                          Comming soon
+                          Coming soon
                         </div>
                       )}
                     </div>
