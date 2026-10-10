@@ -9,12 +9,10 @@ import SectionHeading from '../components/SectionHeading';
 import USPCard from '../components/USPCard';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
-import ClientLogo from '../components/ClientLogo';
 import Button from '../components/Button';
 
 import { productsData } from '../data/products';
 import { industriesData } from '../data/industries';
-import { clientsData } from '../data/clients';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -574,32 +572,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </section>
-
-
-        {/* ================= CLIENTS NETWORK (CONTINUOUS HORIZONTAL LINE MARQUEE) ================= */}
-        <section className="py-20 bg-white overflow-hidden border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-            <SectionHeading
-              badge="INDUSTRIAL NETWORK"
-              title="Trusted by Industry"
-              subtitle="Serving leading equipment manufacturers, instrument developers, and distributors across India and abroad."
-              centered={true}
-            />
-          </div>
-
-          {/* Continuous Non-Stop Single Horizontal Line */}
-          <div className="relative w-full overflow-hidden py-4">
-            {/* Left & Right Soft Fade Masks */}
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-white to-transparent z-10" />
-
-            <div className="animate-marquee-infinite flex items-center">
-              {[...clientsData, ...clientsData, ...clientsData].map((client, idx) => (
-                <ClientLogo key={`${client.id}-${idx}`} client={client} />
-              ))}
-            </div>
           </div>
         </section>
 
