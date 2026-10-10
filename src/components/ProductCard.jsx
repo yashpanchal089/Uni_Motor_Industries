@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, FileCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function ProductCard({ product, onSelect }) {
   const [imgError, setImgError] = useState(false);
@@ -60,13 +60,6 @@ export default function ProductCard({ product, onSelect }) {
             <div className="text-slate-400 font-bold text-sm">Uni Motors Model</div>
           )}
 
-          {/* Drawing Available Badge */}
-          {product.drawingImage && (
-            <div className="absolute top-2.5 left-2.5 bg-emerald-700/95 text-white text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded shadow flex items-center gap-1 backdrop-blur">
-              <FileCheck className="w-3 h-3" />
-              <span>Drawing</span>
-            </div>
-          )}
 
           {/* Category Tag */}
           <div className="absolute top-2.5 right-2.5 bg-primary-navy/90 text-brand-gold text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-brand-gold/30">

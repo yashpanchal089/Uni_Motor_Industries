@@ -107,7 +107,7 @@ export const productsData = [
       "Stall-protected rotor architecture prevents burn-out"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd4a289f8e.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202402/image_750x_65dec850301dd.jpg",
+    drawingImage: "/drawings/synchronous-motors.png",
     imageType: "ac-motor-1"
   },
   {
@@ -147,7 +147,7 @@ export const productsData = [
       "Pre-wired with color-coded leads"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd2b7b9d99.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202402/image_750x_65d2f0ec97748.jpg",
+    drawingImage: "/drawings/mtr4a.png",
     imageType: "ac-motor-2"
   },
   {
@@ -187,7 +187,7 @@ export const productsData = [
       "Universal mounting alignment"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd4ef0dcf6.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202402/image_750x_65decb2d5b1c8.jpg",
+    drawingImage: "/drawings/mtr4b.png",
     imageType: "ac-motor-3"
   },
   {
@@ -226,7 +226,7 @@ export const productsData = [
       "Extended service life under continuous operation"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd515248fc.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202402/image_750x_65decca822fa8.jpg",
+    drawingImage: "/drawings/mtr4db.png",
     imageType: "ac-motor-2"
   },
   {
@@ -265,7 +265,7 @@ export const productsData = [
       "Direct coupling compatible with GB spur gearboxes"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd61eeeec0.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202402/image_750x_65ded4d88fe57.jpg",
+    drawingImage: "/drawings/mtr6b.png",
     imageType: "ac-motor-3"
   },
   {
@@ -304,7 +304,7 @@ export const productsData = [
       "Can remain stalled under voltage without burning"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd597bbc27.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202402/image_750x_65ded0f51da69.jpg",
+    drawingImage: "/drawings/mtr8c.png",
     imageType: "ac-motor-3"
   },
 
@@ -344,7 +344,7 @@ export const productsData = [
       "Compatible with unipolar and bipolar drive circuits"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd4a289f8e.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202312/image_750x_657159b404802.jpg",
+    drawingImage: "/drawings/mts5.png",
     imageType: "ac-motor-1"
   },
   {
@@ -379,7 +379,7 @@ export const productsData = [
       "Direct gearbox flange mounting"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd597bbc27.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202312/image_750x_657153ec88ca9.jpg",
+    drawingImage: "/drawings/mts4b.png",
     imageType: "ac-motor-2"
   },
   {
@@ -414,7 +414,7 @@ export const productsData = [
       "Long continuous service life"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd515248fc.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202312/image_750x_657154c5c9b56.jpg",
+    drawingImage: "/drawings/mts4s.png",
     imageType: "ac-motor-2"
   },
   {
@@ -451,7 +451,7 @@ export const productsData = [
       "Can withstand continuous stall without thermal damage"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654dd597bbc27.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202312/image_750x_657158b899c2a.jpg",
+    drawingImage: "/drawings/mts8c.png",
     imageType: "ac-motor-3"
   },
 
@@ -492,7 +492,7 @@ export const productsData = [
       "Pre-lubricated with high-grade synthetic grease"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e185fc4f24.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a2164897339.jpg",
+    drawingImage: "/drawings/gb5p.png",
     imageType: "gearbox-1"
   },
   {
@@ -529,7 +529,7 @@ export const productsData = [
       "Vibration-isolated alloy faceplate"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e185fc4f24.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a216688183c.jpg",
+    drawingImage: "/drawings/gb5h.png",
     imageType: "gearbox-2"
   },
   {
@@ -566,7 +566,7 @@ export const productsData = [
       "Compatible with MTR5, MTR4, MTRD4, and DC motors"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e1b4a43fe2.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a21742641ca.jpg",
+    drawingImage: "/drawings/gb7.png",
     imageType: "gearbox-3"
   },
   {
@@ -603,7 +603,7 @@ export const productsData = [
       "Multi-hole universal mounting geometry"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e1bd0d0c7d.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a2175f8e73b.jpg",
+    drawingImage: "/drawings/gb4.png",
     imageType: "gearbox-4"
   },
   {
@@ -640,7 +640,7 @@ export const productsData = [
       "Broad motor mounting compatibility"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e1c3142e02.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a2175f8e73b.jpg",
+    drawingImage: "/drawings/gb8.png",
     imageType: "gearbox-5"
   },
   {
@@ -677,7 +677,7 @@ export const productsData = [
       "Multi-stage high reduction steel gear train"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e1c92b7bb0.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a217d2e8982.jpg",
+    drawingImage: "/drawings/gbu.png",
     imageType: "gearbox-6"
   },
   {
@@ -714,7 +714,7 @@ export const productsData = [
       "Precision heat-treated steel gear profiles"
     ],
     image: "https://mechtex.com/uploads/images/202311/image_750x_654e1f7f3fbbb.jpg",
-    drawingImage: "https://mechtex.com/uploads/images/202401/image_750x_65a21820eba74.jpg",
+    drawingImage: "/drawings/gbw.png",
     imageType: "gearbox-6"
   }
 ];
